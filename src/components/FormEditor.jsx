@@ -26,7 +26,7 @@ const FormEditor = ({
       type: "text",
       required: true,
       enabled: true,
-      order: form.formFields.length + 1,
+      order: form.formFields.length,
       tooltip: {
         status: false,
         message: ""

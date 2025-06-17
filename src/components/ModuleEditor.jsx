@@ -24,7 +24,7 @@ const ModuleEditor = ({
       moduleId: module.moduleId,
       title: `New Form ${module.forms.length + 1}`,
       description: '',
-      order: module.forms.length + 1,
+      order: module.forms.length,
       enabled: true,
       formFields: [],
       createdAt: new Date().toISOString(),

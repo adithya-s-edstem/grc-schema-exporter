@@ -16,7 +16,7 @@ const FormBuilder = () => {
     const newModule = {
       moduleId: uuidv4(),
       name: `New Module ${schema.modules.length + 1}`,
-      order: schema.modules.length + 1,
+      order: schema.modules.length,
       enabled: true,
       forms: [],
       createdAt: new Date().toISOString(),
