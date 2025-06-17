@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { v4 } from 'uuid'
 
 function App() {
   const [fieldName, setFieldName] = useState("")
@@ -6,22 +7,23 @@ function App() {
   const [moduleId, setModuleId] = useState("")
   const [placeholder, setPlaceholder] = useState("")
   const [tooltip, setTooltip] = useState("")
+  const [type, setType] = useState("")
 
   const genSchema = {
-    "formFieldId": "b8478f18-478b-4fc0-a4ba-36efbeb949ee",
-    "formId": "e2bacd72-2cc5-4c8c-b2be-ab28631a4a0a",
-    "name": "Event Description/Summary",
+    "formFieldId": v4(),
+    "formId": formId,
+    "name": fieldName,
     "enabled": true,
     "order": 2,
-    "placeholder": "What happened, Where did the event occur, Who are the parties involved, How the event happened",
+    "placeholder": placeholder,
     "required": true,
-    "type": "textarea",
+    "type": type,
     "conditional": {
       "status": false
     },
     "tooltip": {
-      "status": true,
-      "message": "Please enter background, issue description, root cause, high level financial and customer/client impact and discovery source"
+      "status": !!tooltip,
+      "message": tooltip
     }
   }
 
@@ -32,10 +34,11 @@ function App() {
         <h2>Form Field schema generator</h2>
         <input type='text' value={formId} onChange={(e) => setFormId(e.target.value)} placeholder='Form ID' />
         <input type='text' value={moduleId} onChange={(e) => setModuleId(e.target.value)} placeholder='Module ID' />
+        <input type='text' value={type} onChange={(e) => setType(e.target.value)} placeholder='Type' />
         <input type='text' value={fieldName} onChange={(e) => setFieldName(e.target.value)} placeholder='Field name' />
         <input type='text' value={placeholder} onChange={(e) => setPlaceholder(e.target.value)} placeholder='Placeholder' />
         <input type='text' value={tooltip} onChange={(e) => setTooltip(e.target.value)} placeholder='Tooltip' />
-        <textarea className="w-full h-40" value={JSON.stringify(genSchema)} />
+        <textarea className="w-full h-40 font-mono" value={JSON.stringify(genSchema)} />
       </div>
     </div >
   )
